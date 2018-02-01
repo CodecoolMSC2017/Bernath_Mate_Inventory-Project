@@ -1,19 +1,19 @@
 package com.codecool;
 
-public class BookProduct extends Product{
+public class BookProduct extends Product {
 
-    private int numOfPages;
+    private int numOfPage;
 
-    public BookProduct(String name, int price, int numOfPages) {
+    public BookProduct(String name, int price, int numOfPage) {
         super(name, price);
-        this.numOfPages = numOfPages;
+        this.numOfPage = numOfPage;
     }
 
-    public int getNumOfPages() {
-        return numOfPages;
+    public int getNumOfPage() {
+        return numOfPage;
     }
 
-    public void setNumOfPages(int numOfPages) {
-        this.numOfPages = numOfPages;
+    public void setNumOfPage(int numOfPage) {
+        this.numOfPage = numOfPage;
     }
 }
