@@ -1,6 +1,6 @@
 package com.codecool;
 
-public class CDProduct extends Product{
+public class CDProduct extends Product {
 
     private int numOfTracks;
 
@@ -10,6 +10,7 @@ public class CDProduct extends Product{
     }
 
     public int getNumOfTracks() {
+
         return numOfTracks;
     }
 
