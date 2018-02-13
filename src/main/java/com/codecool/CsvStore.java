@@ -3,45 +3,7 @@ package com.codecool;
 import java.io.*;
 import java.util.*;
 
-public abstract class CsvStore implements StorageCapable{
-
-    private List<Product> products = new ArrayList<>();
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    protected abstract void storeProduct(Product product);
-
-    @Override
-    public List<Product> getAllProduct() {
-        return products;
-    }
-
-    @Override
-    public void storeCDProduct(String name, int price, int tracks) {
-        storeProduct(createProduct("cd", name, price, tracks));
-    }
-
-    @Override
-    public void storeBookProduct(String name, int price, int pages) {
-        storeProduct(createProduct("book", name, price, pages));
-    }
-
-    protected Product createProduct(String type, String name, int price, int size) {
-        Product product = null;
-        try {
-            if (type.toLowerCase().equals("book")) {
-                product = new BookProduct(name, price, size);
-            } else if (type.toLowerCase().equals("cd")) {
-                product = new CDProduct(name, price, size);
-            }
-        } catch (IllegalArgumentException ex) {
-            ex.printStackTrace();
-            System.out.println("Not valid type! (Try cd or book!)");
-        }
-        return product;
-    }
+public abstract class CsvStore extends Store {
 
     private void saveToCsv(String filename) {
         String csvSeparator = ",";
@@ -53,7 +15,7 @@ public abstract class CsvStore implements StorageCapable{
             header.append("Tracks/Pages");
             bw.write(header.toString());
             bw.newLine();
-            for (Product product: products) {
+            for (Product product: getProducts()) {
                 StringBuffer oneLine = new StringBuffer();
                 if (product instanceof CDProduct) {
                     oneLine.append(product.getName());
