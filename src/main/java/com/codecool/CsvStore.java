@@ -9,12 +9,6 @@ public abstract class CsvStore extends Store {
         String csvSeparator = ",";
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), "UTF-8"));
-            StringBuffer header = new StringBuffer();
-            header.append("Name,");
-            header.append("Price,");
-            header.append("Tracks/Pages");
-            bw.write(header.toString());
-            bw.newLine();
             for (Product product: getProducts()) {
                 StringBuffer oneLine = new StringBuffer();
                 if (product instanceof CDProduct) {
