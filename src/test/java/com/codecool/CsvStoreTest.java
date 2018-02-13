@@ -41,7 +41,6 @@ class CsvStoreTest {
         psCsv.store("TestProducts.csv");
         br = new BufferedReader(new FileReader("TestProducts.csv"));
 
-        assertNotEquals(null, br.readLine());
         assertEquals("mixtape,1000,20", br.readLine());
     }
 }
